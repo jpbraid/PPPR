@@ -1,9 +1,7 @@
 packages <- c("tidyverse", "forecast", "tseries", "svars", "vars", "urca", "tsDyn", "gogarch", "plm", "punitroots")
 lapply(packages, require, character.only = TRUE)
 
-setwd("C:/Users/jpbra/Desktop/uni/SEM3/advanced econometrics")
-
-data <- read_csv("project/data/data.join.csv") 
+data <- read_csv(here("data", "data.join.csv")) 
 
 # the dates seem to be read in as d_m_y which could cause problems for plotting
 data$Date <- dmy(data$Date)
