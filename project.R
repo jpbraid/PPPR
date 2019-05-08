@@ -3,7 +3,6 @@ lapply(packages, require, character.only = TRUE)
 
 setwd("C:/Users/jpbra/Desktop/uni/SEM3/advanced econometrics")
 
-
 data <- read_csv("project/data/data.join.csv") 
 
 # the dates seem to be read in as d_m_y which could cause problems for plotting
@@ -23,7 +22,6 @@ df2 <- data.frame(x = LXUKJP, y = LUKCPI, z = LJPCPI)
 df3 <- data.frame(x = LXUKUS, y = LUKCPI, z = LUSCPI)
 
 # do some basic plots etc
-
 ggplot() +
   geom_line(data = data, aes(x = Date, y = log(XUKJP) - log(XUKJP)[1], 
                              colour = "JP-UK Exchange Rate")) +
@@ -120,14 +118,10 @@ summary(ur.df(LJPCPI, type="drift", lags=trunc(length(LJPCPI -1)^(1/3))))
 adf.test(LJPCPI)
 adfTest(LJPCPI, lags=trunc(length(LXUKUS -1)^(1/3)), type="c")
 
-
-
 # PP test:
 PP.test(LZJPUS, type="Z_alpha")
 PP.test(LXUSJP, type="Z(t_alpha)")
 pp.test(LXUSJP) # type is Z_alpha
-
-
 
 # KPSS tests on each series
 # generally, a longer lag seems to reduce value of the test statistic
@@ -165,7 +159,6 @@ kpss.test(LJPCPI)
 
 # all the series seem to be non-stationary according to the KPSS test
 # and four out of six series are non-stationary according to the ADF test
-
 
 # let's now check that the first difference of each series is stationary:
 LXUSJP_d1 <- diff(LXUSJP, differences=1)
@@ -260,16 +253,12 @@ kpss.test(LJPCPI_d1)
 # well ur.df does anyway. ur.kpss allows for either custom lag lengths or
 # "short", "long", which are based on formulas (... is that Newey-West? or something else?). kpss.test is based on the same formulas.
 
-
-
 #############################################################################################
 #############################################################################################
 #############################################################################################
 #############################################################################################
 #############################################################################################
 #############################################################################################
-
-
 
 # let's now do the Engle-Granger procedure
 
