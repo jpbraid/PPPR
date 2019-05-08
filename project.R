@@ -1,18 +1,11 @@
-library(tidyverse)
-library(forecast)
-library(tseries)
-library(svars)
-library(vars)
-library(urca)
-library(tsDyn)
-library(gogarch)
-library(plm)
-library(punitroots)
-# lots of packages!
+packages <- c("tidyverse", "forecast", "tseries", "svars", "vars", "urca", "tsDyn", "gogarch", "plm", "punitroots")
+lapply(packages, require, character.only = TRUE)
+
 
 setwd("C:/Users/jpbra/Desktop/uni/SEM3/advanced econometrics")
 
-data <- read_csv("project/data/data.join.csv") # load the "joined" data set
+# load the "joined" data set
+data <- read_csv("project/data/data.join.csv") 
 
 # the dates seem to be read in as d_m_y which could cause problems for plotting
 
